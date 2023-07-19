@@ -7,7 +7,7 @@ app = Flask(  # Create a flask app
 	static_folder='static'  # Name of directory for static files
 )
 
-
+accounts = {"jan": "jej", "siwarha": "123", "majd": "majaj", "sergey": "ytcff", "Daniel": "5523"}
 username = "siwarha"
 password = "123"
 facebook_friends=["Jan", "Daniel", "Majd", "Shams", "Nour", "Ghadir", "Sam", "Celine", "Jihad"]
@@ -21,7 +21,8 @@ def login():
 	else: 
 		name = request.form['username']
 		passw = request.form['password']
-		if (name==username and passw==password):
+
+		if (name in accounts and accounts[name]==passw):
 		  return redirect(url_for('home'))
 		else:
 		  return render_template('login.html')
